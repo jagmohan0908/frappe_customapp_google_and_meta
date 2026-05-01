@@ -34,8 +34,21 @@ function openCampaignAIChat({ campaignName, googleAdsAccount = null, days = 60, 
 		primary_action: () => sendQuestion(),
 	});
 
-	const chatHtml = dialog.fields_dict.chat_html.$wrapper;
-	chatHtml.css({ maxHeight: "420px", overflowY: "auto", border: "1px solid #e5e7eb", borderRadius: "8px", padding: "12px", marginBottom: "8px", background: "#f8fafc" });
+	const chatField = dialog.get_field("chat_html");
+	const chatHtml = chatField && chatField.$wrapper ? chatField.$wrapper : null;
+	if (!chatHtml) {
+		frappe.msgprint("Unable to open AI chat view. Please refresh and try again.");
+		return;
+	}
+	chatHtml.css({
+		maxHeight: "420px",
+		overflowY: "auto",
+		border: "1px solid #e5e7eb",
+		borderRadius: "8px",
+		padding: "12px",
+		marginBottom: "8px",
+		background: "#f8fafc",
+	});
 
 	const renderMessages = () => {
 		const html = messages

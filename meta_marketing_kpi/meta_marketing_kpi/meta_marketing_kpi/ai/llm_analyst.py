@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-from statistics import mean
 import re
 
 import frappe
 import requests
-from frappe.utils import flt
 
 
 def _ensure_solution_prefix(text: str) -> str:
@@ -55,63 +53,14 @@ def _build_format_instruction(question: str) -> str:
     )
 
 
-def generate_summary(forecasts: list[dict], alerts: list[dict], recommendations: list[dict]) -> dict:
-    avg_roas = round(mean([flt(item.get("predicted_roas")) for item in forecasts]), 3) if forecasts else 0
-    high_alerts = [item for item in alerts if item.get("severity") == "high"]
-    top_actions = recommendations[:3]
-
-    lines = [
-        f"Forecast baseline ROAS across active campaigns is {avg_roas}.",
-        f"{len(alerts)} anomalies detected, including {len(high_alerts)} high-severity signals.",
-        f"Top recommendation count: {len(top_actions)} actions prioritized for immediate review.",
-    ]
-    return {
-        "headline": "AI Performance Brief",
-        "narrative": " ".join(lines),
-        "top_actions": top_actions,
-    }
-
-
-def answer_question(question: str, context: dict) -> dict:
-    ai_answer = _answer_with_openai(question, context, "You are a Google Ads KPI analyst.")
-    if ai_answer:
-        return ai_answer
-
-    q = (question or "").lower()
-    if "roas" in q and "drop" in q:
-        return {
-            "answer": _ensure_solution_prefix(
-                "ROAS drop is usually tied to conversion-rate decline or sudden CPC increase. "
-                "Check campaigns in current high-severity anomaly list first, then reduce wasted spend "
-                "by tightening targeting and pausing low-converting assets."
-            ),
-            "confidence": 0.76,
-        }
-    if "budget" in q and ("increase" in q or "shift" in q):
-        return {
-            "answer": _ensure_solution_prefix(
-                "Increase budget first for campaigns with high predicted ROAS and no active cost-spike alert. "
-                "Keep per-change limits within configured guardrails, and recheck CTR/CVR after 48 hours before scaling further."
-            ),
-            "confidence": 0.81,
-        }
+def answer_meta_contextual_question(question: str, context: dict) -> dict:
+    answer = _answer_with_openai(question, context, "You are a senior Meta Ads campaign performance analyst.")
+    if answer:
+        return answer
     return {
         "answer": _ensure_solution_prefix(
-            "Use the recommendation list sorted by priority and expected lift, then approve guarded actions in workflow mode. "
-            "Start with one high-confidence change, measure impact, and roll out gradually."
-        ),
-        "confidence": 0.64,
-    }
-
-
-def answer_contextual_question(question: str, context: dict, role_hint: str) -> dict:
-    ai_answer = _answer_with_openai(question, context, role_hint)
-    if ai_answer:
-        return ai_answer
-    return {
-        "answer": _ensure_solution_prefix(
-            "Not enough signal from current context. Check recent cost, conversions, CTR, and conversion-rate trends before deciding. "
-            "Then test one controlled change in budget, audience, or ad creative and compare 7-day results."
+            "Meta campaign performance is weak if clicks or leads are flat while spend is increasing. "
+            "Check CTR, CPC, and cost per lead trend, then update creative and audience targeting in small controlled steps."
         ),
         "confidence": 0.58,
     }
@@ -155,6 +104,5 @@ def _answer_with_openai(question: str, context: dict, role_hint: str) -> dict | 
         inr_content = _normalize_currency_to_inr(content)
         return {"answer": _ensure_solution_prefix(inr_content), "confidence": 0.86}
     except Exception:
-        frappe.log_error(frappe.get_traceback(), "OpenAI analyst call failed")
+        frappe.log_error(frappe.get_traceback(), "OpenAI meta analyst call failed")
         return None
-

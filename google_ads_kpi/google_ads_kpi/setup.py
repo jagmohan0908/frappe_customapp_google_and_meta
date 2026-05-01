@@ -16,53 +16,90 @@ def create_doctypes():
         {
             "name": "Google Ads Campaign KPI",
             "fields": [
+                {"fieldname": "ad_channel", "label": "Ad Channel", "fieldtype": "Select", "options": "\nSearch\nYouTube\nSEARCH\nYOUTUBE", "in_list_view": 1},
                 {"fieldname": "date", "label": "Date", "fieldtype": "Date", "reqd": 1, "in_list_view": 1},
                 {"fieldname": "campaign_id", "label": "Campaign ID", "fieldtype": "Data", "reqd": 1},
                 {"fieldname": "campaign_name", "label": "Campaign Name", "fieldtype": "Data", "in_list_view": 1},
                 {"fieldname": "impressions", "label": "Impressions", "fieldtype": "Int", "in_list_view": 1},
+                {"fieldname": "interactions", "label": "Interactions (Views)", "fieldtype": "Int", "in_list_view": 1},
+                {"fieldname": "interaction_rate", "label": "Interaction Rate (View Rate)", "fieldtype": "Percent", "read_only": 1},
+                {"fieldname": "cpm", "label": "CPM", "fieldtype": "Currency", "read_only": 1},
+                {"fieldname": "cpv", "label": "CPV", "fieldtype": "Currency", "read_only": 1},
+                {"fieldname": "view_through_conversions", "label": "View Through Conversions", "fieldtype": "Float"},
                 {"fieldname": "clicks", "label": "Clicks", "fieldtype": "Int", "in_list_view": 1},
                 {"fieldname": "cost", "label": "Cost", "fieldtype": "Currency", "in_list_view": 1},
                 {"fieldname": "conversions", "label": "Conversions", "fieldtype": "Float", "in_list_view": 1},
                 {"fieldname": "revenue", "label": "Revenue", "fieldtype": "Currency"},
-                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "SR Lead Source", "in_list_view": 1}
+                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "Lead Source", "in_list_view": 1}
             ]
         },
         {
             "name": "Google Ads Ad KPI",
             "fields": [
                 {"fieldname": "date", "label": "Date", "fieldtype": "Date", "in_list_view": 1},
+                {"fieldname": "campaign_id", "label": "Campaign ID", "fieldtype": "Data"},
                 {"fieldname": "ad_id", "label": "Ad ID", "fieldtype": "Data", "reqd": 1},
                 {"fieldname": "campaign_name", "label": "Campaign Name", "fieldtype": "Data", "in_list_view": 1},
+                {"fieldname": "ad_group_id", "label": "Ad Group ID", "fieldtype": "Data"},
                 {"fieldname": "ad_group", "label": "Ad Group", "fieldtype": "Data", "in_list_view": 1},
+                {"fieldname": "ad_type", "label": "Ad Type", "fieldtype": "Data", "in_list_view": 1},
+                {"fieldname": "ad_status", "label": "Ad Status", "fieldtype": "Data"},
+                {"fieldname": "final_url", "label": "Final URL", "fieldtype": "Data"},
                 {"fieldname": "impressions", "label": "Impressions", "fieldtype": "Int", "in_list_view": 1},
                 {"fieldname": "clicks", "label": "Clicks", "fieldtype": "Int", "in_list_view": 1},
+                {"fieldname": "ctr", "label": "CTR", "fieldtype": "Percent"},
+                {"fieldname": "average_cpc", "label": "Average CPC", "fieldtype": "Currency"},
                 {"fieldname": "cost", "label": "Cost", "fieldtype": "Currency", "in_list_view": 1},
                 {"fieldname": "conversions", "label": "Conversions", "fieldtype": "Float", "in_list_view": 1},
-                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "SR Lead Source", "in_list_view": 1}
+                {"fieldname": "conversions_value", "label": "Conversions Value", "fieldtype": "Currency"},
+                {"fieldname": "campaign_resource_name", "label": "Campaign Resource Name", "fieldtype": "Data"},
+                {"fieldname": "ad_group_resource_name", "label": "Ad Group Resource Name", "fieldtype": "Data"},
+                {"fieldname": "ad_resource_name", "label": "Ad Resource Name", "fieldtype": "Data"},
+                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "Lead Source", "in_list_view": 1}
             ]
         },
         {
             "name": "Google Ads Keyword KPI",
             "fields": [
                 {"fieldname": "date", "label": "Date", "fieldtype": "Date", "in_list_view": 1},
+                {"fieldname": "campaign_id", "label": "Campaign ID", "fieldtype": "Data"},
+                {"fieldname": "campaign_name", "label": "Campaign Name", "fieldtype": "Data", "in_list_view": 1},
+                {"fieldname": "ad_group_id", "label": "Ad Group ID", "fieldtype": "Data"},
+                {"fieldname": "ad_group", "label": "Ad Group", "fieldtype": "Data", "in_list_view": 1},
+                {"fieldname": "criterion_id", "label": "Criterion ID", "fieldtype": "Data"},
                 {"fieldname": "keyword", "label": "Keyword", "fieldtype": "Data", "reqd": 1, "in_list_view": 1},
+                {"fieldname": "match_type", "label": "Match Type", "fieldtype": "Data"},
                 {"fieldname": "impressions", "label": "Impressions", "fieldtype": "Int", "in_list_view": 1},
                 {"fieldname": "clicks", "label": "Clicks", "fieldtype": "Int", "in_list_view": 1},
+                {"fieldname": "ctr", "label": "CTR", "fieldtype": "Percent"},
+                {"fieldname": "average_cpc", "label": "Average CPC", "fieldtype": "Currency"},
                 {"fieldname": "cost", "label": "Cost", "fieldtype": "Currency", "in_list_view": 1},
                 {"fieldname": "conversions", "label": "Conversions", "fieldtype": "Float", "in_list_view": 1},
-                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "SR Lead Source", "in_list_view": 1}
+                {"fieldname": "conversions_value", "label": "Conversions Value", "fieldtype": "Currency"},
+                {"fieldname": "search_impression_share", "label": "Search Impression Share", "fieldtype": "Percent"},
+                {"fieldname": "search_top_impression_share", "label": "Search Top Impression Share", "fieldtype": "Percent"},
+                {"fieldname": "campaign_resource_name", "label": "Campaign Resource Name", "fieldtype": "Data"},
+                {"fieldname": "ad_group_resource_name", "label": "Ad Group Resource Name", "fieldtype": "Data"},
+                {"fieldname": "ad_group_criterion_resource_name", "label": "Ad Group Criterion Resource Name", "fieldtype": "Data"},
+                {"fieldname": "keyword_view_resource_name", "label": "Keyword View Resource Name", "fieldtype": "Data"},
+                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "Lead Source", "in_list_view": 1}
             ]
         },
         {
             "name": "Google Ads Search Term KPI",
             "fields": [
                 {"fieldname": "date", "label": "Date", "fieldtype": "Date", "in_list_view": 1},
+                {"fieldname": "campaign_id", "label": "Campaign ID", "fieldtype": "Data"},
+                {"fieldname": "campaign_name", "label": "Campaign Name", "fieldtype": "Data", "in_list_view": 1},
                 {"fieldname": "search_term", "label": "Search Term", "fieldtype": "Data", "reqd": 1, "in_list_view": 1},
                 {"fieldname": "impressions", "label": "Impressions", "fieldtype": "Int", "in_list_view": 1},
                 {"fieldname": "clicks", "label": "Clicks", "fieldtype": "Int", "in_list_view": 1},
+                {"fieldname": "ctr", "label": "CTR", "fieldtype": "Percent"},
                 {"fieldname": "cost", "label": "Cost", "fieldtype": "Currency", "in_list_view": 1},
                 {"fieldname": "conversions", "label": "Conversions", "fieldtype": "Float", "in_list_view": 1},
-                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "SR Lead Source", "in_list_view": 1}
+                {"fieldname": "campaign_resource_name", "label": "Campaign Resource Name", "fieldtype": "Data"},
+                {"fieldname": "search_term_view_resource_name", "label": "Search Term View Resource Name", "fieldtype": "Data"},
+                {"fieldname": "source", "label": "Source", "fieldtype": "Link", "options": "Lead Source", "in_list_view": 1}
             ]
         }
     ]

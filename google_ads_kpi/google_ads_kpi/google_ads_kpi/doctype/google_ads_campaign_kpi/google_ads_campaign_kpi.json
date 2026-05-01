@@ -7,10 +7,17 @@
     "engine": "InnoDB",
     "field_order": [
         "google_ads_account",
+        "google_ad_account_name",
+        "ad_channel",
         "date",
         "campaign_id",
         "campaign_name",
         "impressions",
+        "interactions",
+        "interaction_rate",
+        "cpm",
+        "cpv",
+        "view_through_conversions",
         "clicks",
         "cost",
         "conversions",
@@ -22,7 +29,23 @@
             "fieldname": "google_ads_account",
             "fieldtype": "Data",
             "in_list_view": 1,
-            "label": "Google Ads Account"
+            "label": "Google Ads Account",
+            "read_only": 1
+        },
+        {
+            "fieldname": "google_ad_account_name",
+            "fieldtype": "Data",
+            "label": "Google Ad Account Name",
+            "in_list_view": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "ad_channel",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Ad Channel",
+            "options": "\nSearch\nYouTube\nDemand Gen\nSEARCH\nYOUTUBE\nDEMAND_GEN",
+            "read_only": 1
         },
         {
             "fieldname": "date",
@@ -41,43 +64,81 @@
             "fieldname": "campaign_name",
             "fieldtype": "Data",
             "in_list_view": 1,
-            "label": "Campaign Name"
+            "label": "Campaign Name",
+            "read_only": 1
         },
         {
             "fieldname": "impressions",
             "fieldtype": "Int",
             "in_list_view": 1,
-            "label": "Impressions"
+            "label": "Impressions",
+            "read_only": 1
+        },
+        {
+            "fieldname": "interactions",
+            "fieldtype": "Int",
+            "in_list_view": 1,
+            "label": "Interactions (Views)",
+            "read_only": 1
+        },
+        {
+            "fieldname": "interaction_rate",
+            "fieldtype": "Percent",
+            "label": "Interaction Rate (View Rate)",
+            "read_only": 1
+        },
+        {
+            "fieldname": "cpm",
+            "fieldtype": "Currency",
+            "label": "CPM",
+            "read_only": 1
+        },
+        {
+            "fieldname": "cpv",
+            "fieldtype": "Currency",
+            "label": "CPV",
+            "read_only": 1
+        },
+        {
+            "fieldname": "view_through_conversions",
+            "fieldtype": "Float",
+            "label": "View Through Conversions",
+            "read_only": 1
         },
         {
             "fieldname": "clicks",
             "fieldtype": "Int",
             "in_list_view": 1,
-            "label": "Clicks"
+            "label": "Clicks",
+            "read_only": 1
         },
         {
             "fieldname": "cost",
             "fieldtype": "Currency",
             "in_list_view": 1,
-            "label": "Cost"
+            "label": "Cost",
+            "read_only": 1
         },
         {
             "fieldname": "conversions",
             "fieldtype": "Float",
             "in_list_view": 1,
-            "label": "Conversions"
+            "label": "Conversions",
+            "read_only": 1
         },
         {
             "fieldname": "revenue",
             "fieldtype": "Currency",
-            "label": "Revenue"
+            "label": "Revenue",
+            "read_only": 1
         },
         {
             "fieldname": "source",
             "fieldtype": "Link",
             "in_list_view": 1,
             "label": "Source",
-            "options": "SR Lead Source"
+            "options": "Lead Source",
+            "read_only": 1
         }
     ],
     "grid_page_length": 50,

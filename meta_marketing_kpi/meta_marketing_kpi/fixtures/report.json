@@ -1,1 +1,98 @@
-[]
+[
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2026-04-06 11:47:00",
+  "module": "Meta Marketing KPI",
+  "name": "Campaign Performance",
+  "prepared_report": 0,
+  "query": "select kpi_date, account_name, campaign_name, sum(spend) as spend, sum(impressions) as impressions, sum(clicks) as clicks, avg(ctr) as ctr, avg(cpc) as cpc, sum(messaging_conversations_started) as messaging_conversations_started, sum(messaging_first_reply) as messaging_first_reply, avg(cost_per_first_reply) as cost_per_first_reply, sum(leads) as leads from `tabMeta Marketing KPI` group by kpi_date, account_name, campaign_name order by kpi_date desc",
+  "ref_doctype": "Meta Marketing KPI",
+  "reference_report": null,
+  "report_name": "Campaign Performance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Campaign Performance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2026-04-06 11:47:30",
+  "module": "Meta Marketing KPI",
+  "name": "Ad Performance",
+  "prepared_report": 0,
+  "query": "select kpi_date, campaign_name, adset_name, ad_name, sum(spend) as spend, sum(impressions) as impressions, sum(video_views) as video_views, sum(video_25) as video_25, sum(video_50) as video_50, sum(video_75) as video_75, sum(video_100) as video_100, sum(messaging_conversations_started) as messaging_conversations_started, sum(messaging_first_reply) as messaging_first_reply, avg(cost_per_first_reply) as cost_per_first_reply from `tabMeta Marketing KPI` group by kpi_date, campaign_name, adset_name, ad_name order by kpi_date desc",
+  "ref_doctype": "Meta Marketing KPI",
+  "reference_report": null,
+  "report_name": "Ad Performance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Ad Performance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2026-04-06 11:48:00",
+  "module": "Meta Marketing KPI",
+  "name": "Account Performance",
+  "prepared_report": 0,
+  "query": "select kpi_date, account_name, sum(spend) as spend, sum(impressions) as impressions, sum(clicks) as clicks, avg(ctr) as ctr, sum(messaging_first_reply) as messaging_first_reply, sum(leads) as leads, avg(cost_per_first_reply) as cost_per_first_reply, avg(cost_per_lead) as cost_per_lead from `tabMeta Marketing KPI` group by kpi_date, account_name order by kpi_date desc",
+  "ref_doctype": "Meta Marketing KPI",
+  "reference_report": null,
+  "report_name": "Account Performance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Account Performance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ],
+  "timeout": 0
+ }
+]

@@ -8,11 +8,26 @@
     "field_order": [
         "google_ads_account",
         "date",
+        "campaign_id",
+        "campaign_name",
+        "ad_group_id",
+        "ad_group",
+        "criterion_id",
         "keyword",
+        "match_type",
         "impressions",
         "clicks",
+        "ctr",
+        "average_cpc",
         "cost",
         "conversions",
+        "conversions_value",
+        "search_impression_share",
+        "search_top_impression_share",
+        "campaign_resource_name",
+        "ad_group_resource_name",
+        "ad_group_criterion_resource_name",
+        "keyword_view_resource_name",
         "source"
     ],
     "fields": [
@@ -29,11 +44,43 @@
             "label": "Date"
         },
         {
+            "fieldname": "campaign_id",
+            "fieldtype": "Data",
+            "label": "Campaign ID"
+        },
+        {
+            "fieldname": "campaign_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Campaign Name"
+        },
+        {
+            "fieldname": "ad_group_id",
+            "fieldtype": "Data",
+            "label": "Ad Group ID"
+        },
+        {
+            "fieldname": "ad_group",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Ad Group"
+        },
+        {
+            "fieldname": "criterion_id",
+            "fieldtype": "Data",
+            "label": "Criterion ID"
+        },
+        {
             "fieldname": "keyword",
             "fieldtype": "Data",
             "in_list_view": 1,
             "label": "Keyword",
             "reqd": 1
+        },
+        {
+            "fieldname": "match_type",
+            "fieldtype": "Data",
+            "label": "Match Type"
         },
         {
             "fieldname": "impressions",
@@ -48,6 +95,16 @@
             "label": "Clicks"
         },
         {
+            "fieldname": "ctr",
+            "fieldtype": "Percent",
+            "label": "CTR"
+        },
+        {
+            "fieldname": "average_cpc",
+            "fieldtype": "Currency",
+            "label": "Average CPC"
+        },
+        {
             "fieldname": "cost",
             "fieldtype": "Currency",
             "in_list_view": 1,
@@ -60,11 +117,46 @@
             "label": "Conversions"
         },
         {
+            "fieldname": "conversions_value",
+            "fieldtype": "Currency",
+            "label": "Conversions Value"
+        },
+        {
+            "fieldname": "search_impression_share",
+            "fieldtype": "Percent",
+            "label": "Search Impression Share"
+        },
+        {
+            "fieldname": "search_top_impression_share",
+            "fieldtype": "Percent",
+            "label": "Search Top Impression Share"
+        },
+        {
+            "fieldname": "campaign_resource_name",
+            "fieldtype": "Data",
+            "label": "Campaign Resource Name"
+        },
+        {
+            "fieldname": "ad_group_resource_name",
+            "fieldtype": "Data",
+            "label": "Ad Group Resource Name"
+        },
+        {
+            "fieldname": "ad_group_criterion_resource_name",
+            "fieldtype": "Data",
+            "label": "Ad Group Criterion Resource Name"
+        },
+        {
+            "fieldname": "keyword_view_resource_name",
+            "fieldtype": "Data",
+            "label": "Keyword View Resource Name"
+        },
+        {
             "fieldname": "source",
             "fieldtype": "Link",
             "in_list_view": 1,
             "label": "Source",
-            "options": "SR Lead Source"
+            "options": "Lead Source"
         }
     ],
     "grid_page_length": 50,

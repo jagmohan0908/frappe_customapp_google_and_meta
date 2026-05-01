@@ -302,7 +302,6 @@ def ask_campaign_ai(
 
     recent_summary = aggregate(recent)
     previous_summary = aggregate(previous) if previous else {}
-
     deltas = {}
     if previous_summary:
         for key in ("impressions", "clicks", "cost", "conversions", "revenue", "ctr", "cvr", "roas", "cpa"):

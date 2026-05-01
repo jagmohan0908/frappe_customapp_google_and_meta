@@ -15,3 +15,11 @@ fixtures = [
         "filters": [["module", "=", "Meta Marketing KPI"]],
     },
 ]
+
+doctype_js = {
+    "Meta Marketing KPI": "meta_marketing_kpi/doctype/meta_marketing_kpi/meta_marketing_kpi.js",
+}
+
+doctype_list_js = {
+    "Meta Marketing KPI": "meta_marketing_kpi/doctype/meta_marketing_kpi/meta_marketing_kpi_list.js",
+}

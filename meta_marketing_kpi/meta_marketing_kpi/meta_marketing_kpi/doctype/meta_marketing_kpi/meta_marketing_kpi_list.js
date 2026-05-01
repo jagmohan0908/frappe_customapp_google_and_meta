@@ -1,33 +1,39 @@
-frappe.listview_settings["Google Ads Campaign KPI"] = {
+frappe.listview_settings["Meta Marketing KPI"] = {
 	onload(listview) {
 		listview.page.add_inner_button("Ask AI Campaign Analyst", () => {
 			frappe.call({
-				method: "google_ads_kpi.google_ads_kpi.ai.api.get_kpi_filter_options",
+				method: "meta_marketing_kpi.meta_marketing_kpi.ai.api.get_meta_filter_options",
 				callback: (r) => {
 					const data = r.message || {};
-					const campaignOptions = (data.campaign_names || []).filter(Boolean);
-					const accountOptions = (data.google_ads_accounts || []).filter(Boolean);
+					const adOptions = (data.ad_names || []).filter(Boolean);
+					const accountOptions = (data.account_names || []).filter(Boolean);
 
-					if (!campaignOptions.length) {
-						frappe.msgprint("No campaign names found in Google Ads Campaign KPI data.");
+					if (!adOptions.length) {
+						frappe.msgprint("No ad names found in Meta Marketing KPI data.");
+						return;
+					}
+					if (!accountOptions.length) {
+						frappe.msgprint("No account names found in Meta Marketing KPI data.");
 						return;
 					}
 
 					frappe.prompt(
 						[
 							{
-								fieldname: "campaign_name",
-								label: "Campaign Name",
+								fieldname: "account_name",
+								label: "Account Name",
 								fieldtype: "Select",
 								reqd: 1,
-								options: campaignOptions.join("\n"),
-								default: campaignOptions[0],
+								options: accountOptions.join("\n"),
+								default: accountOptions[0],
 							},
 							{
-								fieldname: "google_ads_account",
-								label: "Google Ads Account (optional)",
+								fieldname: "ad_name",
+								label: "Ad Name",
 								fieldtype: "Select",
-								options: ["", ...accountOptions].join("\n"),
+								reqd: 1,
+								options: adOptions.join("\n"),
+								default: adOptions[0],
 							},
 							{
 								fieldname: "question",
@@ -38,9 +44,9 @@ frappe.listview_settings["Google Ads Campaign KPI"] = {
 							},
 						],
 						(values) => {
-							openCampaignAIChat({
-								campaignName: values.campaign_name,
-								googleAdsAccount: values.google_ads_account || null,
+							openMetaAIChat({
+								adName: values.ad_name,
+								accountName: values.account_name,
 								initialQuestion: values.question,
 								days: 60,
 							});
@@ -54,10 +60,10 @@ frappe.listview_settings["Google Ads Campaign KPI"] = {
 	},
 };
 
-function openCampaignAIChat({ campaignName, googleAdsAccount = null, days = 60, initialQuestion = "" }) {
+function openMetaAIChat({ adName, accountName, days = 60, initialQuestion = "" }) {
 	const messages = [];
 	const dialog = new frappe.ui.Dialog({
-		title: `AI Campaign Chat - ${campaignName || "Campaign"}`,
+		title: `AI Campaign Chat - ${adName || "Ad"}`,
 		size: "large",
 		fields: [
 			{ fieldtype: "HTML", fieldname: "chat_html" },
@@ -79,6 +85,7 @@ function openCampaignAIChat({ campaignName, googleAdsAccount = null, days = 60, 
 		frappe.msgprint("Unable to open AI chat view. Please refresh and try again.");
 		return;
 	}
+
 	chatHtml.css({
 		maxHeight: "420px",
 		overflowY: "auto",
@@ -112,10 +119,10 @@ function openCampaignAIChat({ campaignName, googleAdsAccount = null, days = 60, 
 
 		const composedQuestion = buildThreadQuestion(messages);
 		frappe.call({
-			method: "google_ads_kpi.google_ads_kpi.ai.api.ask_campaign_ai",
+			method: "meta_marketing_kpi.meta_marketing_kpi.ai.api.ask_meta_campaign_ai",
 			args: {
-				campaign_name: campaignName,
-				google_ads_account: googleAdsAccount || null,
+				account_name: accountName,
+				ad_name: adName,
 				question: composedQuestion,
 				days,
 			},
@@ -175,4 +182,3 @@ function escapeHtml(value) {
 		.replaceAll('"', "&quot;")
 		.replaceAll("'", "&#39;");
 }
-

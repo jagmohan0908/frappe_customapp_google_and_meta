@@ -8,13 +8,24 @@
     "field_order": [
         "google_ads_account",
         "date",
+        "campaign_id",
         "ad_id",
         "campaign_name",
+        "ad_group_id",
         "ad_group",
+        "ad_type",
+        "ad_status",
+        "final_url",
         "impressions",
         "clicks",
+        "ctr",
+        "average_cpc",
         "cost",
         "conversions",
+        "conversions_value",
+        "campaign_resource_name",
+        "ad_group_resource_name",
+        "ad_resource_name",
         "source"
     ],
     "fields": [
@@ -31,6 +42,11 @@
             "label": "Date"
         },
         {
+            "fieldname": "campaign_id",
+            "fieldtype": "Data",
+            "label": "Campaign ID"
+        },
+        {
             "fieldname": "ad_id",
             "fieldtype": "Data",
             "label": "Ad ID",
@@ -43,10 +59,31 @@
             "label": "Campaign Name"
         },
         {
+            "fieldname": "ad_group_id",
+            "fieldtype": "Data",
+            "label": "Ad Group ID"
+        },
+        {
             "fieldname": "ad_group",
             "fieldtype": "Data",
             "in_list_view": 1,
             "label": "Ad Group"
+        },
+        {
+            "fieldname": "ad_type",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Ad Type"
+        },
+        {
+            "fieldname": "ad_status",
+            "fieldtype": "Data",
+            "label": "Ad Status"
+        },
+        {
+            "fieldname": "final_url",
+            "fieldtype": "Data",
+            "label": "Final URL"
         },
         {
             "fieldname": "impressions",
@@ -61,6 +98,16 @@
             "label": "Clicks"
         },
         {
+            "fieldname": "ctr",
+            "fieldtype": "Percent",
+            "label": "CTR"
+        },
+        {
+            "fieldname": "average_cpc",
+            "fieldtype": "Currency",
+            "label": "Average CPC"
+        },
+        {
             "fieldname": "cost",
             "fieldtype": "Currency",
             "in_list_view": 1,
@@ -73,11 +120,31 @@
             "label": "Conversions"
         },
         {
+            "fieldname": "conversions_value",
+            "fieldtype": "Currency",
+            "label": "Conversions Value"
+        },
+        {
+            "fieldname": "campaign_resource_name",
+            "fieldtype": "Data",
+            "label": "Campaign Resource Name"
+        },
+        {
+            "fieldname": "ad_group_resource_name",
+            "fieldtype": "Data",
+            "label": "Ad Group Resource Name"
+        },
+        {
+            "fieldname": "ad_resource_name",
+            "fieldtype": "Data",
+            "label": "Ad Resource Name"
+        },
+        {
             "fieldname": "source",
             "fieldtype": "Link",
             "in_list_view": 1,
             "label": "Source",
-            "options": "SR Lead Source"
+            "options": "Lead Source"
         }
     ],
     "grid_page_length": 50,

@@ -1,0 +1,51 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"zWLLv\",\"type\":\"header\",\"data\":{\"text\":\"Google Ads KPI\",\"col\":12}},{\"id\":\"shortcuts1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Campaign Performance\",\"col\":3}},{\"id\":\"shortcuts2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ad Performance\",\"col\":3}},{\"id\":\"shortcuts3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Keyword Metrics\",\"col\":3}},{\"id\":\"shortcuts4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Search Terms\",\"col\":3}}]",
+ "creation": "2026-04-13 17:47:27.442160",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "chart",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Google Ads KPI",
+ "links": [],
+ "modified": "2026-04-13 17:47:27.442160",
+ "modified_by": "Administrator",
+ "module": "Google Ads KPI",
+ "name": "Google Ads KPI",
+ "number_cards": [],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 0.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "label": "Campaign Performance",
+   "link_to": "Google Ads Campaign KPI",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "label": "Ad Performance",
+   "link_to": "Google Ads Ad KPI",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "label": "Keyword Metrics",
+   "link_to": "Google Ads Keyword KPI",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "label": "Search Terms",
+   "link_to": "Google Ads Search Term KPI",
+   "type": "DocType"
+  }
+ ],
+ "title": "Google Ads KPI"
+}
