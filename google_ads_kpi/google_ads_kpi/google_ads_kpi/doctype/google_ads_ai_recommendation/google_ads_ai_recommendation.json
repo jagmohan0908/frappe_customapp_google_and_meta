@@ -1,0 +1,78 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2026-05-01 14:12:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "campaign_id",
+        "campaign_name",
+        "priority",
+        "action_type",
+        "expected_lift_percent",
+        "risk_score",
+        "confidence_score",
+        "status",
+        "evidence",
+        "reason",
+        "reviewer_notes",
+        "applied_on"
+    ],
+    "fields": [
+        {"fieldname": "campaign_id", "fieldtype": "Data", "label": "Campaign ID", "reqd": 1},
+        {"fieldname": "campaign_name", "fieldtype": "Data", "in_list_view": 1, "label": "Campaign Name"},
+        {
+            "fieldname": "priority",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Priority",
+            "options": "P1\nP2\nP3"
+        },
+        {
+            "fieldname": "action_type",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Action Type",
+            "options": "reduce_bid\nrefresh_ad_copy\npause_low_quality_terms\nraise_budget\nreview"
+        },
+        {"fieldname": "expected_lift_percent", "fieldtype": "Float", "label": "Expected Lift Percent"},
+        {"fieldname": "risk_score", "fieldtype": "Float", "label": "Risk Score"},
+        {"fieldname": "confidence_score", "fieldtype": "Float", "label": "Confidence Score"},
+        {
+            "default": "Draft",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Draft\nApproved\nRejected\nApplied"
+        },
+        {"fieldname": "evidence", "fieldtype": "Small Text", "label": "Evidence"},
+        {"fieldname": "reason", "fieldtype": "Small Text", "label": "Reason"},
+        {"fieldname": "reviewer_notes", "fieldtype": "Small Text", "label": "Reviewer Notes"},
+        {"fieldname": "applied_on", "fieldtype": "Datetime", "label": "Applied On"}
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2026-05-01 14:12:00.000000",
+    "modified_by": "Administrator",
+    "module": "Google Ads KPI",
+    "name": "Google Ads AI Recommendation",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}

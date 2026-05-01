@@ -1,0 +1,104 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2026-05-01 14:10:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "objective",
+        "risk_tolerance",
+        "filter_mode",
+        "google_ads_account_filter",
+        "campaign_name_filter",
+        "max_budget_increase_percent",
+        "max_bid_change_percent",
+        "minimum_data_days",
+        "auto_execution_enabled"
+    ],
+    "fields": [
+        {
+            "default": "maximize_roas",
+            "fieldname": "objective",
+            "fieldtype": "Select",
+            "label": "Objective",
+            "options": "maximize_roas\nmaximize_conversions\nbalanced_growth",
+            "reqd": 1
+        },
+        {
+            "default": "medium",
+            "fieldname": "risk_tolerance",
+            "fieldtype": "Select",
+            "label": "Risk Tolerance",
+            "options": "low\nmedium\nhigh",
+            "reqd": 1
+        },
+        {
+            "default": "20",
+            "fieldname": "max_budget_increase_percent",
+            "fieldtype": "Float",
+            "label": "Max Budget Increase Percent"
+        },
+        {
+            "default": "15",
+            "fieldname": "max_bid_change_percent",
+            "fieldtype": "Float",
+            "label": "Max Bid Change Percent"
+        },
+        {
+            "default": "14",
+            "fieldname": "minimum_data_days",
+            "fieldtype": "Int",
+            "label": "Minimum Data Days"
+        },
+        {
+            "default": "0",
+            "fieldname": "auto_execution_enabled",
+            "fieldtype": "Check",
+            "label": "Auto Execution Enabled"
+        },
+        {
+            "default": "all",
+            "fieldname": "filter_mode",
+            "fieldtype": "Select",
+            "label": "Report Scope",
+            "options": "all\nfiltered"
+        },
+        {
+            "fieldname": "google_ads_account_filter",
+            "fieldtype": "Select",
+            "label": "Google Ads Account Filter",
+            "depends_on": "eval:doc.filter_mode==\"filtered\""
+        },
+        {
+            "fieldname": "campaign_name_filter",
+            "fieldtype": "Select",
+            "label": "Campaign Name Filter",
+            "depends_on": "eval:doc.filter_mode==\"filtered\""
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "issingle": 1,
+    "links": [],
+    "modified": "2026-05-01 14:10:00.000000",
+    "modified_by": "Administrator",
+    "module": "Google Ads KPI",
+    "name": "Google Ads AI Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "doctype": "Workspace",
+    "name": "Google Ads KPI",
+    "title": "Google Ads KPI",
+    "label": "Google Ads KPI",
+    "module": "Google Ads KPI",
+    "is_standard": 1,
+    "public": 1,
+    "icon": "chart",
+    "shortcuts": [
+      {
+        "type": "DocType",
+        "link_to": "Google Ads Campaign KPI",
+        "label": "Campaign Performance",
+        "color": "Blue"
+      },
+      {
+        "type": "DocType",
+        "link_to": "Google Ads Ad KPI",
+        "label": "Ad Performance",
+        "color": "Green"
+      },
+      {
+        "type": "DocType",
+        "link_to": "Google Ads Keyword KPI",
+        "label": "Keyword Metrics",
+        "color": "Orange"
+      },
+      {
+        "type": "DocType",
+        "link_to": "Google Ads Search Term KPI",
+        "label": "Search Terms",
+        "color": "Purple"
+      },
+      {
+        "type": "DocType",
+        "link_to": "Google Ads AI Settings",
+        "label": "AI Settings",
+        "color": "Gray"
+      },
+      {
+        "type": "DocType",
+        "link_to": "Google Ads AI Recommendation",
+        "label": "AI Recommendations",
+        "color": "Red"
+      },
+      {
+        "type": "DocType",
+        "link_to": "Google Ads AI Audit Log",
+        "label": "AI Audit Log",
+        "color": "Cyan"
+      }
+    ],
+    "content": "[{\"id\":\"zWLLv\",\"type\":\"header\",\"data\":{\"text\":\"Google Ads KPI\",\"col\":12}},{\"id\":\"shortcuts1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Campaign Performance\",\"col\":3}},{\"id\":\"shortcuts2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ad Performance\",\"col\":3}},{\"id\":\"shortcuts3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Keyword Metrics\",\"col\":3}},{\"id\":\"shortcuts4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Search Terms\",\"col\":3}},{\"id\":\"ai_shortcuts_header\",\"type\":\"header\",\"data\":{\"text\":\"Google Ads AI\",\"col\":12}},{\"id\":\"shortcuts5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"AI Settings\",\"col\":4}},{\"id\":\"shortcuts6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"AI Recommendations\",\"col\":4}},{\"id\":\"shortcuts7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"AI Audit Log\",\"col\":4}}]"
+  }
+]

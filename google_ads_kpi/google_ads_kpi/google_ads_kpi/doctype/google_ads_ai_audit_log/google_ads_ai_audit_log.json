@@ -1,0 +1,57 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2026-05-01 14:14:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "recommendation",
+        "action",
+        "details",
+        "actor",
+        "action_time"
+    ],
+    "fields": [
+        {
+            "fieldname": "recommendation",
+            "fieldtype": "Link",
+            "label": "Recommendation",
+            "options": "Google Ads AI Recommendation",
+            "reqd": 1
+        },
+        {
+            "fieldname": "action",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Action",
+            "options": "approve\nreject\napply\nrollback"
+        },
+        {"fieldname": "details", "fieldtype": "Small Text", "label": "Details"},
+        {"fieldname": "actor", "fieldtype": "Data", "in_list_view": 1, "label": "Actor"},
+        {"fieldname": "action_time", "fieldtype": "Datetime", "in_list_view": 1, "label": "Action Time"}
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2026-05-01 14:14:00.000000",
+    "modified_by": "Administrator",
+    "module": "Google Ads KPI",
+    "name": "Google Ads AI Audit Log",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}
