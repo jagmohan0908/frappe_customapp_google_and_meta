@@ -1,0 +1,7 @@
+{
+  "openai_api_key": "sk-your-openai-key",
+  "developer_mode": 0,
+  "maintenance_mode": 0,
+  "scheduler_enabled": 1,
+  "background_workers": 1
+}

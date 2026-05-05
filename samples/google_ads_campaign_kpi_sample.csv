@@ -1,0 +1,4 @@
+google_ads_account,google_ad_account_name,ad_channel,date,campaign_id,campaign_name,impressions,interactions_views,clicks,cost,conversions,revenue,source
+123-456-7890,Main Google Ads Account,Search,2026-05-01,CAMP-1001,Kidney Awareness Search,12500,580,412,6450.75,23,20150.00,Google
+123-456-7890,Main Google Ads Account,Video,2026-05-02,CAMP-1002,Kidney New Video Campaign,18500,760,301,7011.40,9,10990.00,Google
+123-456-7890,Main Google Ads Account,Display,2026-05-03,CAMP-1003,Retargeting Display,9100,390,204,2380.25,14,11600.00,Google

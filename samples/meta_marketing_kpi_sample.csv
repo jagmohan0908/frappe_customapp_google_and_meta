@@ -1,0 +1,4 @@
+date,account_id,account_name,campaign_id,campaign_name,ad_set_id,ad_set_name,ad_id,ad_name,impressions,reach,clicks,spend,leads,purchases,revenue,source
+2026-05-01,act_123456789,Main Meta Ads,MCAMP-2001,Diabetes Lead Campaign,MAS-3001,Audience A,MAD-4001,Creative A,22100,18850,540,5120.50,41,3,12600.00,Meta
+2026-05-02,act_123456789,Main Meta Ads,MCAMP-2002,Hormonal Health Video,MAS-3002,Audience B,MAD-4002,Creative B,17400,15100,420,4388.90,26,2,9200.00,Meta
+2026-05-03,act_123456789,Main Meta Ads,MCAMP-2003,Retargeting Offers,MAS-3003,Audience C,MAD-4003,Creative C,14200,12900,382,3712.75,29,4,14120.00,Meta
