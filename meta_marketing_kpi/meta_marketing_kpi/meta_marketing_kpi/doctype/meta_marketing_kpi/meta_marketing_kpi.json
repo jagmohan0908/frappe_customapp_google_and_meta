@@ -170,45 +170,53 @@
         {
             "fieldname": "account_id",
             "fieldtype": "Data",
-            "label": "Account ID"
+            "label": "Account ID",
+            "in_standard_filter": 1
         },
         {
             "fieldname": "account_name",
             "fieldtype": "Data",
             "label": "Account Name",
-            "in_list_view": 1
+            "in_list_view": 1,
+            "in_standard_filter": 1
         },
         {
             "fieldname": "campaign_id",
             "fieldtype": "Data",
-            "label": "Campaign ID"
+            "label": "Campaign ID",
+            "in_standard_filter": 1
         },
         {
             "fieldname": "campaign_name",
             "fieldtype": "Data",
             "label": "Campaign Name",
-            "in_list_view": 1
+            "in_list_view": 1,
+            "in_standard_filter": 1
         },
         {
             "fieldname": "adset_id",
             "fieldtype": "Data",
-            "label": "Ad Set ID"
+            "label": "Ad Set ID",
+            "in_standard_filter": 1
         },
         {
             "fieldname": "adset_name",
             "fieldtype": "Data",
-            "label": "Ad Set Name"
+            "label": "Ad Set Name",
+            "in_standard_filter": 1
         },
         {
             "fieldname": "ad_id",
             "fieldtype": "Data",
-            "label": "Ad ID"
+            "label": "Ad ID",
+            "in_standard_filter": 1
         },
         {
             "fieldname": "ad_name",
             "fieldtype": "Data",
             "label": "Ad Name",
-            "in_list_view": 1
+            "in_list_view": 1,
+            "in_standard_filter": 1
         },
         {
             "fieldname": "impressions",
