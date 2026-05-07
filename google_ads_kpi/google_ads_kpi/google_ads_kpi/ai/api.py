@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 import frappe
 from frappe.utils import flt, now
 
@@ -228,14 +230,24 @@ def get_kpi_filter_options() -> dict:
     )
     campaign_rows = frappe.get_all(
         "Google Ads Campaign KPI",
-        fields=["campaign_name"],
-        filters={"campaign_name": ["is", "set"]},
-        group_by="campaign_name",
-        order_by="campaign_name asc",
+        fields=["google_ads_account", "campaign_name"],
+        filters={"google_ads_account": ["is", "set"], "campaign_name": ["is", "set"]},
+        order_by="google_ads_account asc, campaign_name asc",
     )
+    account_campaigns_map: dict[str, list[str]] = {}
+    for row in campaign_rows:
+        account = (row.get("google_ads_account") or "").strip()
+        campaign = (row.get("campaign_name") or "").strip()
+        if not account or not campaign:
+            continue
+        account_campaigns_map.setdefault(account, [])
+        if campaign not in account_campaigns_map[account]:
+            account_campaigns_map[account].append(campaign)
+
     return {
         "google_ads_accounts": [row.get("google_ads_account") for row in account_rows if row.get("google_ads_account")],
-        "campaign_names": [row.get("campaign_name") for row in campaign_rows if row.get("campaign_name")],
+        "campaign_names": sorted({row.get("campaign_name") for row in campaign_rows if row.get("campaign_name")}),
+        "account_campaigns_map": account_campaigns_map,
     }
 
 
@@ -260,14 +272,35 @@ def ask_recommendation_ai(recommendation_name: str, question: str) -> dict:
 
 @frappe.whitelist()
 def ask_campaign_ai(
-    campaign_name: str,
     question: str,
+    campaign_name: str | None = None,
+    campaign_names: list[str] | str | None = None,
     google_ads_account: str | None = None,
     days: int = 60,
 ) -> dict:
-    filters = {"campaign_name": campaign_name}
+    filters = {}
     if google_ads_account:
         filters["google_ads_account"] = google_ads_account
+    selected_campaign_names: list[str] = []
+    if campaign_names:
+        parsed = campaign_names
+        if isinstance(campaign_names, str):
+            try:
+                parsed = frappe.parse_json(campaign_names)
+            except Exception:
+                try:
+                    parsed = json.loads(campaign_names)
+                except Exception:
+                    parsed = [item.strip() for item in campaign_names.split(",") if item.strip()]
+        if isinstance(parsed, list):
+            selected_campaign_names = [str(item).strip() for item in parsed if str(item).strip()]
+
+    analyze_all_campaigns = (campaign_name or "").strip().lower() in {"all", "*"}
+    if selected_campaign_names:
+        filters["campaign_name"] = ["in", selected_campaign_names]
+        analyze_all_campaigns = False
+    elif not analyze_all_campaigns and (campaign_name or "").strip():
+        filters["campaign_name"] = (campaign_name or "").strip()
 
     rows = frappe.get_all(
         "Google Ads Campaign KPI",
@@ -277,7 +310,8 @@ def ask_campaign_ai(
         limit=max(14, int(days)),
     )
     if not rows:
-        frappe.throw("No Google Ads campaign KPI records found for the selected campaign/account.")
+        scope = "selected account" if analyze_all_campaigns else "selected campaign/account"
+        frappe.throw(f"No Google Ads campaign KPI records found for {scope}.")
 
     recent = rows[:7]
     previous = rows[7:14]
@@ -320,7 +354,8 @@ def ask_campaign_ai(
     ]
 
     context = {
-        "campaign_name": campaign_name,
+        "campaign_name": "All Campaigns" if analyze_all_campaigns else (campaign_name or ""),
+        "selected_campaign_names": selected_campaign_names,
         "google_ads_account": google_ads_account,
         "records_used": len(rows),
         "recent_7_days": recent_summary,
